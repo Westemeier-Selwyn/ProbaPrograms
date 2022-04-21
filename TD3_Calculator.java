@@ -1,7 +1,6 @@
 import java.util.Scanner;
-import java.util.jar.Manifest;
 
-public class Launcher {
+public class TD3_Calculator {
 
     public static void main(String[] args) {
         
@@ -75,7 +74,11 @@ public class Launcher {
                     double chances = 0;
                     for(int i = 0; i < revolver; i++)
                     {
-                        chances += (success)*(echec);
+                        chances += success*Math.pow(echec, i);
+                        if(i == (revolver-1))
+                        {
+                            chances = Math.pow(echec, i+1);
+                        }
                     }
                 }
                 break;
