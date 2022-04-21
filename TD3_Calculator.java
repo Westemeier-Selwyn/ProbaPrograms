@@ -19,6 +19,7 @@ public class TD3_Calculator {
                 case 0:
                 {
                     System.exit(0);
+                    sc.close();
                 }
                 break;
 
@@ -122,7 +123,7 @@ public class TD3_Calculator {
                 }
                 break;
             }
-
+            
         }
 
     }
