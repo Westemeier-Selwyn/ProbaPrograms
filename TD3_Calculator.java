@@ -7,7 +7,6 @@ public class TD3_Calculator {
 
     public static void main(String[] args) {
         
-        
         while(true)
         {
             Scanner sc = new Scanner(System.in);
