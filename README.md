@@ -1,4 +1,4 @@
-# AlgoPrograms
+# ProbaPrograms
 
 To execute on Windows:
 - Double Click
