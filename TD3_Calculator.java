@@ -107,7 +107,7 @@ public class TD3_Calculator {
                     System.out.println("Probability of exactly " + boysNr + " boys = " + df.format(i));
                     double ii = 0;
                     int o = 0;
-                    for(int j = children; j > (children-boysNr); j--)
+                    for(int j = children; j > (children/2); j--)
                     {
                         ii += Math.pow(1-probability, j)*Math.pow(probability, o);
                         o++;
