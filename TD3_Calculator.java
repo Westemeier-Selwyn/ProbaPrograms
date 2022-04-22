@@ -57,7 +57,7 @@ public class TD3_Calculator {
                     System.out.println("If failed:");
                     int perte = sc.nextInt()*mise;
                     
-                    double gain = (m1*36 + m2*5*6 + m3*25 + perte*125)/216;
+                    double gain = (m1*36 + m2*5*6 + m3*25 + perte*125)/216 - mise;
                     System.out.println("Your gain is " + df.format(gain) + " Euro.");
                 }
                 break;
