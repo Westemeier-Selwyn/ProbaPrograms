@@ -14,6 +14,7 @@ public class TD4_Calculator {
             switch(page)
             {
                 case 0:
+                    sc.close();
                     System.exit(0);
                 break;
                 case 1:
@@ -59,27 +60,121 @@ public class TD4_Calculator {
                 case 3:
                 {
                     System.out.println("1) Please enter first value: ");
-                    double st0 = sc.nextDouble();
+                    double st1 = sc.nextDouble();
                     System.out.println("1) Please enter third value: ");
-                    double rd0 = sc.nextDouble();
+                    double rd1 = sc.nextDouble();
 
                     double result1 = 0;
 
-                    if(st0 < 0)
+                    if(st1 < 0)
                     {
-
+                        result1 = pr(-st1) + pr(rd1);
                     }
+                    else
+                    {
+                        result1 = pr(rd1) - pr(st1);
+                    }
+                    
+                    System.out.println("- Result = " + result1);
+
+                    System.out.println("2) Please enter first value: ");
+                    double st2 = sc.nextDouble();
+                    System.out.println("2) Please enter third value: ");
+                    double rd2 = sc.nextDouble();
+
+                    double result2 = 0;
+
+                    if(st2 < 0)
+                    {
+                        result2 = pr(-st2) + pr(rd2);
+                    }
+                    else
+                    {
+                        result2 = pr(rd2) - pr(st2);
+                    }
+                    
+                    System.out.println("- Result = " + result2);
+
+                    System.out.println("3) Please enter value: ");
+                    double st3 = sc.nextDouble();
+
+                    double result3 = 0;
+
+                    if(st3 < 0)
+                    {
+                        result3 = 0.5 - pr(-st3);
+                    }
+                    else
+                    {
+                        result3 = 0.5 + pr(st3);
+                    }
+
+                    System.out.println("- Result = " + result3);
+
+                    System.out.println("4) Please enter value: ");
+                    double st4 = sc.nextDouble();
+
+                    double result4 = 0;
+
+                    if(st4 < 0)
+                    {
+                        result4 = 0.5 + pr(-st4);
+                    }
+                    else
+                    {
+                        result4 = 0.5 - pr(st4);
+                    }
+
+                    System.out.println("- Result = " + result4);
 
                 }
                 break;
                 case 4:
                 {
+                    System.out.println("1) Please enter value: ");
+                    double st1 = sc.nextDouble();
 
+                    double result1 = rp(st1);
+                    
+                    System.out.println("- Result = " + result1);
+
+                    System.out.println("2) Please enter value: ");
+                    double st2 = sc.nextDouble();
+
+
+                    double result2 = rp(st2+pr(1));
+                    
+                    System.out.println("- Result = " + result2);
+
+                    System.out.println("3) Please enter value: ");
+                    double st3 = sc.nextDouble();
+
+                    double result3 = rp(st3-0.5);
+
+                    System.out.println("- Result = " + result3);
+
+                    System.out.println("4) Please enter value: ");
+                    double st4 = sc.nextDouble();
+
+                    double result4 = rp(0.5-st4);
+
+                    System.out.println("4) Result = " + result4);
                 }
                 break;
                 case 5:
                 {
+                    System.out.println("Please enter average: ");
+                    double moyenne = sc.nextDouble();
+                    System.out.println("Please enter deviation: ");
+                    double ecart = sc.nextDouble();
 
+                    double st = (30 - moyenne) / ecart;
+                    if(st < 0)
+                    {
+                        st = st*-1;
+                    }
+                    double result = 0.5 - pr(st);
+                    System.out.println("Result = " + result);
                 }
                 break;
                 default:
@@ -108,8 +203,30 @@ public class TD4_Calculator {
         return combin;
     }
 
-    static double loiNormP(double i)
+    static double pr(double i)
     {
-        
+        StNoDi l = new StNoDi();
+        return l.PR(i);
     }
+
+    static double rp(double j)
+    {
+        StNoDi l = new StNoDi();
+
+        double temp = 0;
+        j = (int) (j*10000);
+
+        for(double i = 0; i < 400; i += 0.01)
+        {
+            double temp0 = l.PR(i);
+            temp0 = (int) (temp0 * 10000);
+            if(temp0 == j)
+            {
+                temp = i;
+                break;
+            }
+        }
+        return temp;
+    }
+
 }
