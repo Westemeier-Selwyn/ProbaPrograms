@@ -23,16 +23,10 @@ public class TD4_Calculator {
                     double moyenne = sc.nextDouble();
                     System.out.println("(i) Please enter exact number of fish: ");
                     int toCatch = sc.nextInt();
-                    System.out.println("(ii) Please enter minimum number of fish: ");
-                    double minCatch = sc.nextDouble();
 
                     double i = (Math.pow(moyenne, toCatch) * Math.pow(Math.E, -moyenne))/factorial(toCatch);
 
-                    double ii = 1;
-                    for(int j = 0; j < minCatch; j++)
-                    {
-                        ii -= (Math.pow(moyenne, j) * Math.pow(Math.E, -moyenne))/factorial(j);
-                    }
+                    double ii = 1 - (Math.pow(moyenne, j) * Math.pow(Math.E, -moyenne))/factorial(j);
 
                     System.out.println("(i) = " + df.format(i));
                     System.out.println("(ii) = " + df.format(ii));
