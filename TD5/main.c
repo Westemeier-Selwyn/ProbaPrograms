@@ -23,11 +23,21 @@ int main() {
 
         int x0,x1,x2,x3,x4,x5,x6,x7,x8;
 
+        printf("Please enter the value of \"?\"\n\n");
         printf("P(x1,x2)|   ?\t|\t|\n");
         printf("------------------------|\n");
         printf("\t|\t|\t|\n");
         printf("------------------------|\n");
         printf("\t|\t|\t|\n");
+
+        scanf("%f", &x0);
+
+        printf("P(x1,x2)|   %f\t|\t|\n", &x0);
+        printf("------------------------|\n");
+        printf("\t|\t|\t|\n");
+        printf("------------------------|\n");
+        printf("\t|\t|\t|\n");
+
 
         
 
