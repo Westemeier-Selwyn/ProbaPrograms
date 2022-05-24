@@ -1,0 +1,44 @@
+FILENAME = FahrenheitToCelsius.c
+OUT = FahrenheitToCelsius
+
+# General format of makefile rules : 
+# TARGET : PREREQUISITES
+# 	Command 1 
+# 	Command 2 
+#	etc...
+
+# Run command requires the executable FahrenheitToCelsius
+run : FahrenheitToCelsius
+	./FahrenheitToCelsius
+
+# Obvious explicit exemple
+FahrenheitToCelsius : FahrenheitToCelsius.c
+	gcc FahrenheitToCelsius.c -o FahrenheitToCelsius
+
+# To avoid the repetition of names, we can use variables : 
+# $(OUT) : $(FILENAME)
+# 	gcc $(FILENAME) -o $(OUT)
+
+# To avoid the repetitions of variables, we can use shortcuts : 
+# $(OUT) : $(FILENAME)
+# 	gcc $< -o $@
+
+debug : $(FILENAME)
+	gcc -g $(FILENAME) -o $(OUT)
+	gdb $(OUT)
+
+clear :
+	rm -f $(OUT)
+
+###################### HELPER #####################
+# out.o: src.c src.h
+#   $@   # "out.o" (target)
+#   $<   # "src.c" (first prerequisite)
+#   $^   # "src.c src.h" (all prerequisites)
+
+# Compile all objects files :
+# %.o : %.c
+# 	gcc -c $^ -o $@
+
+
+# Putting @ before a command allows to avoid printing it to the shell

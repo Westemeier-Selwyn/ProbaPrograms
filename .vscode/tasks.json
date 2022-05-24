@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Build active file/directory",
+			"command": "make",
+			"args": [
+				"-f",
+				"${workspaceFolder}/makefile",
+				"target=${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Clean active file/directory",
+			"command": "make",
+			"args": [
+				"-f",
+				"${workspaceFolder}/makefile",
+				"clean"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Run active file/directory",
+			"type": "process",
+			"command": "${fileDirname}/.build/${fileBasenameNoExtension}",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			}
+		}
+	]
+}

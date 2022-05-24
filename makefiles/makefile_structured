@@ -1,0 +1,37 @@
+FILENAME = main.c
+OUT = main
+# Getting all sources files in src folder
+SOURCES = $(wildcard src/*.c)
+# Converting source files names to objects files
+OBJECTS = $(patsubst src/%.c, objects/%.o, $(SOURCES))
+COMPILER = gcc
+
+# Rule to compute the main program while requiring the objects files
+$(OUT) : $(FILENAME) $(OBJECTS)
+	gcc $(FILENAME) $(OBJECTS) -o $(OUT)
+
+# Implicit rule to compute the object file
+objects/%.o : src/%.c
+	gcc -c $^ -o $@
+
+run : $(OUT)
+	 ./$(OUT)
+
+debug : $(FILENAME) $(HEADER_OBJECT)
+	gcc -g $(FILENAME) $(HEADER_OBJECT) -o $(OUT)
+	gdb $(OUT)
+
+clear :
+	rm -f $(OUT) $(OBJECTS)
+
+###################### HELPER #####################
+# out.o: src.c src.h
+#   $@   # "out.o" (target)
+#   $<   # "src.c" (first prerequisite)
+#   $^   # "src.c src.h" (all prerequisites)
+
+# %.o : %.c
+# 	gcc -c $^ -o $@
+
+
+# Putting @ before a command allows to avoid printing it to the shell
